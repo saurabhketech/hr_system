@@ -6,7 +6,7 @@ export default (app) => {
 	app.route("/email/fetch").post(auth.requiresLogin, fetch_email.fetch);
 
 	/* Route for add tag  */
-	app.route("/email/assignTag").post(auth.requiresLogin, fetch_email.assignTag);
+	app.route("/email/assignTag").post( fetch_email.assignTag);
 
 	return app;
 };

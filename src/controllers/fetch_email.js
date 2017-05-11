@@ -24,7 +24,7 @@ export class FetchController extends BaseAPIController {
 		req.email.findOneAndUpdate({
 			"_id": req.body.mongo_id
 		}, {
-			"$push": {
+			"$addToSet": {
 				"tag_id": req.body.tag_id
 			}
 		}).exec(function (err, data) {
