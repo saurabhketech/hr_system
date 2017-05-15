@@ -838,6 +838,24 @@
 			"item": [
 				{
 					"name": "Email Fetch",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"if (jsonData.status == 1) {",
+									"    tests[\"status true\"] = true;",
+									"} else {",
+									"    tests[\"status true\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
 					"request": {
 						"url": "{{url}}/email/fetch/?accessToken={{token}}",
 						"method": "POST",
@@ -860,6 +878,108 @@
 								{
 									"key": "page",
 									"value": "1",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Tag",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"if (jsonData.status == 1) {",
+									"    tests[\"status true\"] = true;",
+									"} else {",
+									"    tests[\"status true\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/email/assignTag/?accessToken={{token}}",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "mongo_id",
+									"value": "5912d40ec0b0923016e80301",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "tag_id",
+									"value": "3",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Change unread Status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"if (jsonData.status == 1) {",
+									"    tests[\"status true\"] = true;",
+									"} else {",
+									"    tests[\"status true\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/email/changeUnreadStatus/?accessToken={{token}}",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "mongo_id",
+									"value": "5912d40ec0b0923016e80301",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "status",
+									"value": "false",
 									"type": "text",
 									"enabled": true
 								}

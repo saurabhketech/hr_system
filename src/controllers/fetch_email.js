@@ -150,42 +150,6 @@ export class FetchController extends BaseAPIController {
             .catch(this.handleErrorResponse.bind(null, res));
     }
 
-
-    deleteTag = (req, res, next) => {
-        MailProvider.assignTag(req.checkBody, req.body, req.getValidationResult())
-            .then(() => {
-                this._db.Tag.tag(req.body.tag_id)
-                    .then((data) => {
-                        if (data.status) {
-                            _.each(req.body.mongo_id, function(val, key) {
-                                req.email.findOneAndUpdate({
-                                    "_id": val
-                                }, {
-                                    "$pull": {
-                                        "tag_id": req.body.tag_id
-                                    }
-                                }).exec(function(err) {
-                                    if (err) {
-                                        next(new Error(err));
-                                    } else {
-                                        if (key == (_.size(req.body.mongo_id) - 1)) {
-                                            res.json({
-                                                status: 1,
-                                                message: "success"
-                                            });
-                                        }
-                                    }
-                                });
-                            });
-                        } else {
-                            next(new Error("invalid tag id"));
-                        }
-                    })
-                    .catch(this.handleErrorResponse.bind(null, res));
-            })
-            .catch(this.handleErrorResponse.bind(null, res));
-    }
-
     changeUnreadStatus = (req, res, next) => {
         MailProvider.changeUnreadStatus(req.checkBody, req.body, req.getValidationResult())
             .then(() => {
