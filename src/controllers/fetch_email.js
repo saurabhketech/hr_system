@@ -65,8 +65,6 @@ export class FetchController extends BaseAPIController {
 
     countEmail = (req, res, next) => {
         var count = [];
-
-        // .catch(this.handleErrorResponse.bind(null, res));
         req.email.aggregate({
             $unwind: {
                 path: "$tag_id",
