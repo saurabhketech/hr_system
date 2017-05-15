@@ -6,7 +6,7 @@ export class ImapController extends BaseAPIController {
     save = (req, res) => {
         ImapProvider.save(this._db.Imap, req.checkBody, req.body, req.getValidationResult())
             .then((data) => {
-                this._db.Imap.create(data)
+	this._db.Imap.create(data)
                     .then(res.json.bind(res))
                     .catch(this.handleErrorResponse.bind(null, res));
             })
@@ -33,7 +33,7 @@ export class ImapController extends BaseAPIController {
                     .catch(this.handleErrorResponse.bind(null, res));
             })
             .catch(this.handleErrorResponse.bind(null, res));
-    }
+	}
 
     /* Imap data delete */
 
@@ -54,8 +54,8 @@ export class ImapController extends BaseAPIController {
         this._db.Imap.findAll({ offset: (req.params.page - 1) * 10, limit: 10 })
             .then(res.json.bind(res))
             .catch(this.handleErrorResponse.bind(null, res));
-    }
-}
+	}
+  }
 
 const controller = new ImapController();
 export default controller;

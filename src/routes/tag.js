@@ -11,7 +11,7 @@ export default (app) => {
     /* Route for tag Delete */
 	app.route("/tag/delete/:type/:tagId").delete(auth.requiresAdminOrHr, tag.deleteTag);
 
-    /* Route for fetch tag Data */
+    /* Route for fetch tag Data*/
 	app.route("/tag/get/:type/:page").get(auth.requiresAdminOrHr, tag.getTag);
 
 		/* Route for fetch all tag data */

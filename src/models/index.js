@@ -7,5 +7,5 @@ export default {
 	User,
 	Imap,
 	Tag,
-	Smtp
+	Smtp,
 };

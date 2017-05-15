@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "hr_recruitment",
-		"_postman_id": "ae1e2c9c-2929-37f2-517f-7db42e6ac205",
+		"_postman_id": "e974d2cc-8939-486b-e12c-8a3742659c1d",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -305,7 +305,10 @@
 						"url": "{{url}}/imap/get/1?accessToken={{token}}",
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -332,7 +335,10 @@
 						"url": "{{url}}/imap/delete/{{imapId}}?accessToken={{token}}",
 						"method": "DELETE",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -492,33 +498,6 @@
 					"response": []
 				},
 				{
-					"name": "Tag Get All",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"if(jsonData){",
-									"    tests[\"get all\"] = true;",
-									"}else{",
-									"    tests[\"get all\"] = false;",
-									"}"
-								]
-							}
-						}
-					],
-					"request": {
-						"url": "{{url}}/tag/get?accessToken={{token}}",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
 					"name": "Tag Get By Type",
 					"event": [
 						{
@@ -540,7 +519,10 @@
 						"url": "{{url}}/tag/get/Default/1?accessToken={{token}}",
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -567,7 +549,10 @@
 						"url": "{{url}}/tag/getbyid/Manual/{{tagid}}?accessToken={{token}}",
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -594,7 +579,10 @@
 						"url": "{{url}}/tag/delete/Manual/{{tagid}}?accessToken={{token}}",
 						"method": "DELETE",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -774,7 +762,10 @@
 						"url": "{{url}}/smtp/get/1?accessToken={{token}}",
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -801,7 +792,10 @@
 						"url": "{{url}}/smtp/getbyid/{{smtpId}}?accessToken={{token}}",
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -828,7 +822,10 @@
 						"url": "{{url}}/smtp/delete/{{smtpId}}?accessToken={{token}}",
 						"method": "DELETE",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -836,18 +833,13 @@
 			]
 		},
 		{
-			"name": "5.verify_token",
-			"description": "",
-			"item": []
-		},
-		{
-			"name": "6.email",
+			"name": "5.email",
 			"description": "",
 			"item": [
 				{
-					"name": "Email fetch",
+					"name": "Email Fetch",
 					"request": {
-						"url": "{{url}}/email/fetch?accessToken={{token}}",
+						"url": "{{url}}/email/fetch/?accessToken={{token}}",
 						"method": "POST",
 						"header": [
 							{
@@ -861,46 +853,13 @@
 							"urlencoded": [
 								{
 									"key": "tag_id",
-									"value": "2",
+									"value": "",
 									"type": "text",
 									"enabled": true
 								},
 								{
 									"key": "page",
 									"value": "1",
-									"type": "text",
-									"enabled": true
-								}
-							]
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Assign Tag",
-					"request": {
-						"url": "{{url}}/email/assignTag?accessToken={{token}}",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "tag_id",
-									"value": "2",
-									"type": "text",
-									"enabled": true
-								},
-								{
-									"key": "mongo_id",
-									"value": "5912d40cc0b0923016e80300",
 									"type": "text",
 									"enabled": true
 								}

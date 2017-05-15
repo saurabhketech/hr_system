@@ -7,20 +7,20 @@ import tag from "../models/constant";
 export class AuthController {
     // middleware for logged in users
 	requiresLogin(req, res, next) {
-		var token = req.param("accessToken");
+		const token = req.param("accessToken");
 		if (token) {
-			jwt.verify(token, "secret_key", function(err, docs) {
+			jwt.verify(token, "secret_key", (err, docs) => {
 				if (err) {
 					next(res.status(400).send({
 						error: "Invalid Token"
 					}));
 				} else {
-					var endTime = moment().unix();
-					var loginTime = docs.exp;
+					const endTime = moment().unix();
+					const loginTime = docs.exp;
 					if (loginTime > endTime) {
 						req.token = docs.token;
 						db.User.findById(req.token)
-                            .then(function(user) {
+                            .then((user) => {
 	if (user) {
 		req.user = user;
 		next();
@@ -41,16 +41,16 @@ export class AuthController {
 	}
 
 	requiresAdmin(req, res, next) {
-		var token = req.param("accessToken");
+		const token = req.param("accessToken");
 		if (token) {
-			jwt.verify(token, "secret_key", function(err, docs) {
+			jwt.verify(token, "secret_key", (err, docs) => {
 				if (err) {
 					next(res.status(400).send({
 						error: "Invalid Token"
 					}));
 				} else {
-					var endTime = moment().unix();
-					var loginTime = docs.exp;
+					const endTime = moment().unix();
+					const loginTime = docs.exp;
 					if (loginTime > endTime) {
 						req.token = docs.token;
 						db.User.find({
@@ -74,6 +74,7 @@ export class AuthController {
 				}
 			});
 		} else {
+
 			next(res.status(400).send({
 				error: "User is not logged in"
 			}));
@@ -81,16 +82,16 @@ export class AuthController {
 	}
 
 	requiresAdminOrHr(req, res, next) {
-		var token = req.param("accessToken");
+		const token = req.param("accessToken");
 		if (token) {
-			jwt.verify(token, "secret_key", function(err, docs) {
+			jwt.verify(token, "secret_key", (err, docs) => {
 				if (err) {
 					next(res.status(400).send({
 						error: "Invalid Token"
 					}));
 				} else {
-					var endTime = moment().unix();
-					var loginTime = docs.exp;
+					const endTime = moment().unix();
+					const loginTime = docs.exp;
 					if (loginTime > endTime) {
 						req.token = docs.token;
 						db.User.find({

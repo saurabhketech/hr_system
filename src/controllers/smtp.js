@@ -6,7 +6,7 @@ export class SmtpController extends BaseAPIController {
     save = (req, res) => {
         SmtpProvider.save(this._db.Smtp, req.checkBody, req.body, req.getValidationResult())
             .then((data) => {
-                this._db.Smtp.create(data)
+	this._db.Smtp.create(data)
                     .then(res.json.bind(res))
                     .catch(this.handleErrorResponse.bind(null, res));
             })
@@ -33,7 +33,7 @@ export class SmtpController extends BaseAPIController {
                     .catch(this.handleErrorResponse.bind(null, res));
             })
             .catch(this.handleErrorResponse.bind(null, res));
-    }
+	}
 
     /* Smtp data delete */
 
@@ -54,7 +54,7 @@ export class SmtpController extends BaseAPIController {
         this._db.Smtp.findAll({ offset: (req.params.page - 1) * 10, limit: 10 })
             .then(res.json.bind(res))
             .catch(this.handleErrorResponse.bind(null, res));
-    }
+	}
 
     /* get smtp by id */
     getSmtpById = (req, res) => {
