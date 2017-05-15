@@ -123,6 +123,22 @@ export class AuthController {
 			}));
 		}
 	}
+
+	verifyToken (req, res, next){
+		var token = req.param("accessToken");
+		if(token){
+			jwt.verify(req.param("accessToken"), "secret_key", function(err) {
+				if(err){
+					next(res.status(400).send({status: false}));
+				}else{
+					res.json({status : true});
+				}
+			});
+		}else{
+			next(new Error("Token Not Found"));
+		}
+
+	}
 }
 
 const controller = new AuthController();
