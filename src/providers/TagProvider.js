@@ -27,7 +27,7 @@ resolve(body);
 }
 });
 });
-});
+};
 export default {
 BaseProvider,
 save,
