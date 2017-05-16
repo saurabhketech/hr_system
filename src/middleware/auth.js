@@ -10,9 +10,7 @@ export class AuthController {
 		if (token) {
 			jwt.verify(token, "secret_key", (err, docs) => {
 				if (err) {
-					next(res.status(400).send({
-						error: "Invalid Token"
-					}));
+					next(res.status(400).send({ error: "Invalid Token" }));
 				} else {
 					const endTime = moment().unix();
 					const loginTime = docs.exp;
@@ -32,9 +30,7 @@ export class AuthController {
 				}
 			});
 		} else {
-			res.status(400).send({
-				error: "User is not logged in"
-			});
+			res.status(400).send({ error: "User is not logged in" });
 			next();
 		}
 	}
@@ -44,9 +40,7 @@ export class AuthController {
 		if (token) {
 			jwt.verify(token, "secret_key", (err, docs) => {
 				if (err) {
-					next(res.status(400).send({
-						error: "Invalid Token"
-					}));
+					next(res.status(400).send({ error: "Invalid Token" }));
 				} else {
 					const endTime = moment().unix();
 					const loginTime = docs.exp;
@@ -63,9 +57,7 @@ export class AuthController {
 		req.user = admin;
 		next();
 	} else {
-		res.status(400).send({
-			error: "You Are Not Authorized"
-		});
+		res.status(400).send({ error: "You Are Not Authorized" });
 		next();
 	}
 });
@@ -74,9 +66,7 @@ export class AuthController {
 			});
 		} else {
 
-			next(res.status(400).send({
-				error: "User is not logged in"
-			}));
+			next(res.status(400).send({ error: "User is not logged in" }));
 		}
 	}
 
@@ -85,9 +75,7 @@ export class AuthController {
 		if (token) {
 			jwt.verify(token, "secret_key", (err, docs) => {
 				if (err) {
-					next(res.status(400).send({
-						error: "Invalid Token"
-					}));
+					next(res.status(400).send({ error: "Invalid Token" }));
 				} else {
 					const endTime = moment().unix();
 					const loginTime = docs.exp;
@@ -108,18 +96,14 @@ export class AuthController {
 		req.user = user;
 		next();
 	} else {
-		next(res.status(400).send({
-			error: "You Are Not Authorized"
-		}));
+		next(res.status(400).send({ error: "You Are Not Authorized" }));
 	}
 });
 					}
 				}
 			});
 		} else {
-			next(res.status(400).send({
-				error: "User is not logged in"
-			}));
+			next(res.status(400).send({ error: "User is not logged in" }));
 		}
 	}
 

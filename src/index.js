@@ -1,4 +1,3 @@
-/* eslint-disable*/
 import http from "http";
 import express from "express";
 import cors from "cors";
@@ -6,8 +5,7 @@ import morgan from "morgan";
 import path from "path";
 import glob from "glob";
 import chalk from "chalk";
-import db from "../mongodb/db.js";
-// import routes from '../routes/inbox.js';
+import db from "./mongodb/db.js";
 import bodyParser from "body-parser";
 import config from "./config.json";
 import expressValidator from "express-validator";
@@ -19,36 +17,29 @@ app.server = http.createServer(app);
 app.use(morgan("dev"));
 app.use(cors());
 app.use(db());
-// app.use('/', routes);
 
 // 3rd party middleware
-app.use(cors({
-	exposedHeaders: config.corsHeaders
-}));
-app.use(bodyParser.json({
-	limit: config.bodyLimit
-}));
-app.use(bodyParser.urlencoded({
-	extended: true
-}));
+app.use(cors({ exposedHeaders: config.corsHeaders }));
+app.use(bodyParser.json({ limit: config.bodyLimit }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
 const initRoutes = (app) => {
     // including all routes
-	glob("./routes/*.js", {
-		cwd: path.resolve("./src")
-	}, (err, routes) => {
-		if (err) {
-			console.log(chalk.red("Error occured including routes"));
-			return;
-		}
+	glob("./routes/*.js", { cwd: path.resolve("./src") }, (err, routes) => {
+        /* eslint-disable*/
+        if (err) {
+            console.log(chalk.red("Error occured including routes"));
+            return;
+        } /* eslint-enable*/
 		routes.forEach((routePath) => {
-            require(routePath).default(app); // eslint-disable-line
-		});
-		console.log(chalk.green("included ${routes.length} route files"));
+			require(routePath).default(app);
+		}); /* eslint-disable*/
+        console.log(chalk.green(`included ${routes.length} route files`)); /* eslint-enable*/
 	});
 };
 
 initRoutes(app);
 app.server.listen(process.env.PORT || config.port);
-console.log("Started on port ${app.server.address().port}");
+/* eslint-disable*/
+console.log(`Started on port ${app.server.address().port}`); /* eslint-enable*/
 export default app;

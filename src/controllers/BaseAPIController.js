@@ -11,7 +11,7 @@ export default class BaseAPIController {
 
 	handleSuccessResponse(res) {
 		res.json({
-			status: "SUCCESS"
+			status: "SUCCESS",
 		});
 	}
 
