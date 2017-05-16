@@ -36,7 +36,6 @@ export class ImapController extends BaseAPIController {
 	}
 
     /* Imap data delete */
-
     deleteImap = (req, res) => {
         this._db.Imap.destroy({ where: { id: req.params.id } })
             .then((data) => {

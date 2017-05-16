@@ -58,7 +58,6 @@ export class ImapController extends BaseAPIController {
 	getTag = (req, res, next) => {
 		if (req.params.type == tag().tagType.automatic || req.params.type == tag().tagType.manual || req.params.type == tag().tagType.default) {
 			this._db.Tag.findAll({ offset: (req.params.page - 1) * 10, limit: 10, where : { type: req.params.type } })
-
             .then(res.json.bind(res))
             .catch(this.handleErrorResponse.bind(null, res));
 		} else {
