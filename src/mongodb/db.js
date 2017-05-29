@@ -26,7 +26,6 @@ module.exports = function() {
         strict: true,
     });
     var email = conn.model("EMAIL", emailSchema);
-    
     cronService.cron(email)
     return function(req, res, next) {
         req.email = email;
